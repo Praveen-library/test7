@@ -1,0 +1,164 @@
+/* Base Reset and Typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f2f6f9;
+    /* Subtle page background */
+    color: #333;
+}
+
+/* Layout Containers */
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.process-section {
+    width: 100%;
+    max-width: 1400px;
+    background-color: transparent;
+}
+
+/* Grid System */
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 50px; /* Increased from 30px to add more spacing between cards */
+}
+
+.process-column {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Timeline Indicators */
+.timeline-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    /* Reduced space between numbers and cards */
+}
+
+.number {
+    font-size: 26px;
+    font-weight: 500;
+    color: #004b7c;
+    /* Matched to dark teal/blue from image */
+    line-height: 1;
+}
+
+.line-container {
+    flex-grow: 1;
+    height: 1.5px;
+    background-color: #cbd5e1;
+    /* The static light grey line */
+    margin-left: 20px;
+    /* Space right of the number */
+    position: relative;
+    overflow: hidden;
+}
+
+.line-progress {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #004b7c;
+    /* Same as the number color */
+    transition: width 1.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Card Wrapper for Entrance Animation */
+.card-wrapper {
+    flex-grow: 1;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.card-wrapper.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Card Content & Hover States */
+.card {
+    background-color: #006bb6;
+    /* Accurate match for teal-blue card background */
+    padding: 25px 30px;
+    /* Reduced top/bottom padding slightly */
+    height: 100%;
+    color: #ffffff;
+    cursor: pointer;
+    /* Smooth transition for hover effects only */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    background-color: #186a99;
+    /* Slightly brighter highlight on hover */
+    box-shadow: 0 15px 30px rgba(0, 59, 109, 0.15);
+}
+
+/* Card Typography & Icons */
+.card h3 {
+    font-size: 21px;
+    font-weight: 600;
+    margin-bottom: 30px;
+    letter-spacing: 0.2px;
+}
+
+.icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon svg,
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.card p {
+    font-size: 11px;
+    /* The specific tiny font size from the image */
+    line-height: 1.6;
+    color: #e2eaf2;
+    margin-bottom: 16px;
+    font-weight: 400;
+}
+
+.card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive Styles */
+@media (max-width: 1100px) {
+    .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+}
